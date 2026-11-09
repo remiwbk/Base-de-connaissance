@@ -19,6 +19,12 @@ const PDFS = [
      auteur: "Prénom",
      date: "2026-11-09"
    },
+   {
+     titre: "Charte",
+     fichier: "pdf/Charte_informatique_numerique.pdf",
+     auteur: "Gabin",
+     date: "2026-11-09"
+   },
 ];
 
 /* ==========================================================
