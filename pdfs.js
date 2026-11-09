@@ -13,6 +13,12 @@ const PDFS = [
      auteur: "Prénom",
      date: "2026-11-09"
    },
+     {
+     titre: "Introduction à Git",
+     fichier: "pdf/GLPI_Guide_utilisateur.pdf",
+     auteur: "Prénom",
+     date: "2026-11-09"
+   },
 ];
 
 /* ==========================================================
