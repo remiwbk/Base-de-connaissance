@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Procédures Git – Projet scolaire</title>
+  <meta name="description" content="Documentation et procédures Git pour collaborer à plusieurs.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav class="nav">
+    <span class="logo">⎇ Projet Git</span>
+    <div class="links">
+      <a href="#procedure">Procédure</a>
+      <a href="#documents">Documents</a>
+      <a href="#equipe">Équipe</a>
+    </div>
+  </nav>
+  <div class="hero-content">
+    <h1>Collaborer avec Git, <span>simplement.</span></h1>
+    <p>Notre site de procédures : branches, tests, validation et mise en ligne des documents PDF.</p>
+    <a class="btn" href="#documents">Voir les documents</a>
+    <a class="btn ghost" href="#procedure">La procédure</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- PROCÉDURE -->
+  <section id="procedure">
+    <h2>La procédure en 6 étapes</h2>
+    <p class="sub">On ne travaille jamais directement sur <code>main</code>. Tout passe par la branche <code>test</code>.</p>
+
+    <div class="steps">
+      <article class="step">
+        <span class="num">1</span>
+        <h3>Récupérer le projet</h3>
+        <pre><code>git clone URL_DU_REPO
+cd nom-du-repo</code></pre>
+      </article>
+
+      <article class="step">
+        <span class="num">2</span>
+        <h3>Créer la branche test (locale)</h3>
+        <pre><code>git checkout -b test</code></pre>
+        <p>Si elle existe déjà : <code>git checkout test</code> puis <code>git pull origin test</code></p>
+      </article>
+
+      <article class="step">
+        <span class="num">3</span>
+        <h3>Ajouter son PDF</h3>
+        <p>Copier le fichier dans le dossier <code>pdf/</code>, puis l'ajouter à la liste dans <code>pdfs.js</code>.</p>
+        <pre><code>git add pdf/mon-fichier.pdf pdfs.js
+git commit -m "Ajout du PDF mon-fichier"</code></pre>
+      </article>
+
+      <article class="step">
+        <span class="num">4</span>
+        <h3>Envoyer sur la branche distante</h3>
+        <pre><code>git push -u origin test</code></pre>
+      </article>
+
+      <article class="step">
+        <span class="num">5</span>
+        <h3>Faire valider (Pull Request)</h3>
+        <p>Sur GitHub : <b>Compare &amp; pull request</b> de <code>test</code> vers <code>main</code>. Un autre membre relit et approuve.</p>
+      </article>
+
+      <article class="step">
+        <span class="num">6</span>
+        <h3>Fusionner dans main</h3>
+        <p>Après validation : <b>Merge pull request</b>. Le site se met à jour tout seul. Chacun resynchronise ensuite :</p>
+        <pre><code>git checkout main
+git pull origin main</code></pre>
+      </article>
+    </div>
+
+    <details class="tips">
+      <summary>💡 Commandes utiles</summary>
+      <pre><code>git status          # état des fichiers
+git log --oneline   # historique
+git branch -a       # toutes les branches
+git pull            # récupérer les changements
+git diff            # voir les modifications</code></pre>
+    </details>
+  </section>
+
+  <!-- DOCUMENTS -->
+  <section id="documents">
+    <h2>Documents PDF</h2>
+    <p class="sub">Clique sur un document pour l'afficher dans le visionneur.</p>
+
+    <div class="viewer-layout">
+      <aside>
+        <input id="search" type="search" placeholder="🔍 Rechercher un document…" aria-label="Rechercher">
+        <ul id="pdf-list"></ul>
+        <p id="empty" class="empty" hidden>Aucun document pour le moment. Ajoutez vos PDF dans <code>pdf/</code> !</p>
+      </aside>
+
+      <div class="viewer">
+        <div class="viewer-bar">
+          <strong id="viewer-title">Aucun document sélectionné</strong>
+          <span class="actions">
+            <a id="btn-open" class="mini" target="_blank" rel="noopener" hidden>Ouvrir ↗</a>
+            <a id="btn-download" class="mini" download hidden>Télécharger ⬇</a>
+            <button id="btn-full" class="mini" hidden>Plein écran ⛶</button>
+          </span>
+        </div>
+        <div class="viewer-body" id="viewer-body">
+          <p class="placeholder">📄 Sélectionne un PDF dans la liste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉQUIPE -->
+  <section id="equipe">
+    <h2>L'équipe</h2>
+    <div class="team" id="team"></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Projet scolaire – hébergé avec GitHub Pages.</p>
+</footer>
+
+<script src="pdfs.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
